@@ -1,0 +1,97 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.7'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	implementation 'com.google.code.gson:gson:2.10.1'//json
+
+	implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final' // Bean Validation
+
+	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.4' //암호화
+	//============websocket================
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.webjars:webjars-locator-core'
+	implementation 'org.webjars:sockjs-client:1.0.2'
+	implementation 'org.webjars:stomp-websocket:2.3.3'
+	implementation 'org.webjars:bootstrap:3.3.7'
+	implementation 'org.webjars:jquery:3.1.1-1'
+	//=======================================
+	implementation 'commons-io:commons-io:2.11.0'    /* Apache commons-io */
+	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4' /* Apache Commons FileUpload */
+
+
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.9'
+
+
+	implementation 'javax.servlet:jstl'
+
+	// OAuth
+	implementation 'org.springframework.security:spring-security-core:6.0.2'
+	implementation 'org.springframework.boot:spring-boot-starter-security' // Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' // OAuth 2.0 Client
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server' // OAuth 2.0 Resource Server
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5' // JWT 라이브러리
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5' // JWT 구현체
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JWT Jackson 모듈
+	implementation 'com.google.guava:guava:31.1-jre'
+
+
+
+	// Firebase
+	implementation 'com.google.firebase:firebase-admin:9.1.1' // Firebase Admin SDK
+
+//email
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+//메시지
+	implementation 'net.nurigo:sdk:4.3.0'
+
+	//xss예방 - 네이버 filter
+	implementation 'com.navercorp.lucy:lucy-xss-servlet:2.0.1'
+	implementation 'com.navercorp.lucy:lucy-xss:1.6.3'
+//StringEscapeUtils 를 사용하기 위해 commons-text 의존성 추가
+	implementation 'org.apache.commons:commons-text:1.10.0'
+
+//FCM 푸시알람
+	implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.2.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
